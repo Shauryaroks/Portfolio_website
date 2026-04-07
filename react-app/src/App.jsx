@@ -67,5 +67,23 @@ function App() {
       </WindowManagerProvider>
     );
   }
+
+  return (
+    <WindowManagerProvider>
+      <div 
+        className="relative w-full h-screen overflow-hidden"
+        style={{
+          backgroundImage: `url('/wallhaven-l3971q_1920x1080.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <DesktopShortcuts />
+        <WindowShells />
+      </div>
+    </WindowManagerProvider>
+  );
 }
+
 export default App;

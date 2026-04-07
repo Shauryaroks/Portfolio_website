@@ -67,5 +67,5 @@ function App() {
       </WindowManagerProvider>
     );
   }
-
+}
 export default App;

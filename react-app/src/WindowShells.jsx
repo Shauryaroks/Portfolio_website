@@ -18,7 +18,6 @@ const windowComponents = {
 
 export default function WindowShells() {
   const { windows, focusedWindowId, focusWindow, closeWindow, updateWindow } = useContext(WindowManagerContext);
-  const [showDevTools, setShowDevTools] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth || 1200, height: window.innerHeight || 820 });
   
   const dragState = useRef({ isDragging: false, startX: 0, startY: 0, startWinX: 0, startWinY: 0, winId: null });
@@ -111,11 +110,6 @@ export default function WindowShells() {
       window.removeEventListener('mouseup', handleMouseUp);
     };
   }, [handleMouseMove, handleMouseUp]);
-
-  const handleMinimize = (winId) => {
-    const win = windows[winId];
-    updateWindow(winId, { minimized: !win.minimized });
-  };
 
   const handleMaximize = (winId) => {
     const win = windows[winId];
@@ -232,17 +226,6 @@ export default function WindowShells() {
         );
       })}
       
-      {showDevTools && (
-        <div className="fixed top-12 right-2 bg-black text-white text-xs p-2 z-[9999] max-h-[60vh] overflow-auto font-mono border-2 border-black">
-          <pre>{JSON.stringify(windows, null, 2)}</pre>
-        </div>
-      )}
-      <button
-        onClick={() => setShowDevTools(v => !v)}
-        className="fixed bottom-10 right-2 bg-white border border-black px-2 py-1 text-xs font-mono z-50 hover:bg-gray-100"
-      >
-        {showDevTools ? 'Hide' : 'Show'} Dev
-      </button>
     </>
   );
 }

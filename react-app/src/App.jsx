@@ -5,13 +5,7 @@ import DesktopShortcuts from './DesktopShortcuts.jsx';
 import './App.css';
 
 function App() {
-  const [time, setTime] = React.useState(new Date());
   const [isMobile, setIsMobile] = React.useState(null);
-  
-  React.useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   React.useEffect(() => {
     const checkMobile = () => {

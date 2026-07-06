@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useCallback } from 'react';
+import React, { createContext, useCallback } from 'react';
 
 const getDefaults = () => {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;

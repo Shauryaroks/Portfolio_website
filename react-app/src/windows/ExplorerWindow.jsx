@@ -42,7 +42,7 @@ const projects = [
 export default function ExplorerWindow() {
   const [viewMode, setViewMode] = useState('list');
   const [selectedItem, setSelectedItem] = useState(null);
-  const [currentPath, setCurrentPath] = useState('~/projects');
+  const currentPath = '~/projects';
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -61,20 +61,6 @@ export default function ExplorerWindow() {
       default: return <FileIcon />;
     }
   };
-
-  const sidebarClass = isMobile
-    ? `fixed left-0 top-0 bottom-0 w-32 bg-gray-50 border-r-2 border-black transform transition-transform duration-300 z-50 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`
-    : 'w-32 border-r-2 border-black bg-gray-50 p-2 flex flex-col gap-1 text-xs group-hover:w-32';
-
-  const sidebarToggle = isMobile && (
-    <button 
-      onClick={() => setSidebarOpen(!sidebarOpen)}
-      className="absolute left-0 top-1/2 -translate-y-1/2 bg-black text-white px-2 py-4 text-xs"
-      style={{ left: sidebarOpen ? '128px' : '0' }}
-    >
-      {sidebarOpen ? '◀' : '▶'}
-    </button>
-  );
 
   return (
     <div className="w-full h-full bg-white font-mono text-sm flex flex-col text-black">

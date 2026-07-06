@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import data from "../content/mail.json";
 
 const InboxIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
@@ -28,11 +29,7 @@ export default function MailWindow() {
     return () => window.removeEventListener('resize', check);
   }, []);
   
-  const emails = [
-    { id: 1, from: 'john.doe@example.com', subject: 'Interested in your work', date: '2024.10.15', unread: true, body: 'Hi, I came across your portfolio and I am really impressed with your work. I would love to connect and discuss a potential collaboration opportunity.' },
-    { id: 2, from: 'sarah.dev@github.io', subject: 'Open Source Contribution', date: '2024.10.12', unread: true, body: 'Hello! I noticed your DataPipe project and would like to contribute. I have experience with ETL pipelines and would love to help.' },
-    { id: 3, from: 'techcorp@hr.com', subject: 'Job Opportunity', date: '2024.10.08', unread: false, body: 'We are looking for a Full Stack Developer with your skillset. Please find the job description attached. Flexible remote work available.' },
-  ];
+  const emails = data.emails;
 
   const handleSend = (e) => {
     e.preventDefault();
@@ -133,7 +130,7 @@ export default function MailWindow() {
           <button className="hover:underline">REFRESH</button>
         </div>
         <div className="text-xs">
-          <span className="text-gray-400">shaurya@dev</span>
+          <span className="text-gray-400">{data.user}</span>
         </div>
       </div>
       

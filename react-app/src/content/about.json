@@ -1,0 +1,22 @@
+{
+  "name": "Shaurya Garg",
+  "tagline": "Computer Engineering student & developer — Patiala, India",
+  "about": "I'm a Computer Engineering student at Thapar Institute focused on AI/ML and backend systems. I've interned building voice-agent and scraping frameworks at Credlix and a RAG chatbot at Moglix, and built LLM-driven simulation platforms, a multi-agent RL system for energy optimization, and a voice-activated recognition robot.",
+  "whatIDo": [
+    "Backend development with FastAPI, Django & PostgreSQL",
+    "AI/ML — RAG systems, LLM orchestration (Gemini/LangChain), reinforcement learning",
+    "Full-stack apps with Next.js, Node.js & Streamlit",
+    "Optimization & simulation with OR-Tools and genetic algorithms"
+  ],
+  "interests": [
+    "Reinforcement Learning",
+    "LLMs, RAG & agents",
+    "Optimization & simulation",
+    "Robotics & computer vision"
+  ],
+  "contact": {
+    "email": "shauryagarg76@gmail.com",
+    "github": "github.com/shauryaroks",
+    "linkedin": "linkedin.com/in/shaurya-garg-801615313"
+  }
+}

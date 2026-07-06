@@ -1,0 +1,85 @@
+{
+  "posts": [
+    {
+      "title": "Event Complex: an LLM-run market for 50 companies",
+      "date": "April 2026",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "What happens when 50 companies make strategic decisions in real time and an LLM runs the market? I built the engine that found out.",
+      "quote": "The hardest part wasn't the AI — it was keeping 100+ people's decisions consistent while the LLMs churned in the background.",
+      "sections": [
+        {
+          "heading": "The idea",
+          "body": "Event Complex is an LLM-powered consulting and market simulation platform. Teams representing 50 simulated companies make strategic business decisions that move company valuation, stock prices, and assets — all in real time.\n\nInstead of a static case study, every choice a team makes feeds back into a living market that the other teams then have to react to."
+        },
+        {
+          "heading": "The hard part: scale",
+          "body": "The backend had to support 100+ concurrent users while orchestrating load-balanced LLM API calls and synchronizing real-time state across every team.\n\nThat meant request orchestration so no single LLM call blocked the room, and a state layer that stayed consistent even as dozens of decisions landed at once."
+        },
+        {
+          "heading": "What I built",
+          "body": "A decision-evaluation pipeline runs each team's strategy through LLM-driven workflows to dynamically simulate the market and business outcomes.\n\nStack: Python, FastAPI, PostgreSQL, LLM APIs, WebSockets."
+        }
+      ]
+    },
+    {
+      "title": "Perplexed: four C-suite chatbots for 200+ people",
+      "date": "2025",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "An AI consulting and audit simulation that put 200+ participants in a room with a company's entire executive team — except the executives were LLMs.",
+      "sections": [
+        {
+          "heading": "The setup",
+          "body": "Built for Saturnalia, Perplexed hosted 200+ participants diagnosing real problem statements and building case solutions through realistic executive interactions.\n\nEach participant could interrogate the leadership, and the leadership answered like the people who actually run the company."
+        },
+        {
+          "heading": "Grounding the personas",
+          "body": "I engineered an LLM backend of 4 distinct chatbots, each simulating a different C-suite persona. To keep them from hallucinating, every persona was grounded on vectorized company documents via Pinecone and LangChain.\n\nSo the CFO answered from the financials, the CTO from the tech docs — retrieval-augmented, not made up."
+        },
+        {
+          "heading": "The frontend",
+          "body": "I built the full Next.js / TanStack frontend and wired Google Gemini API calls for the simulated executive responses.\n\nStack: Next.js, TanStack, LangChain, Pinecone, Google Gemini."
+        }
+      ]
+    },
+    {
+      "title": "CitySaver: teaching buildings to share power",
+      "date": "Feb 2026",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "A real-time microgrid simulation where multiple buildings learn to coordinate energy decisions — and cut carbon by doing it.",
+      "sections": [
+        {
+          "heading": "The problem",
+          "body": "Buildings consume power, generate solar, and emit carbon independently. Left alone, they don't coordinate — and the grid pays for it.\n\nI wanted to model what happens when they cooperate."
+        },
+        {
+          "heading": "Multi-agent reinforcement learning",
+          "body": "Using the CityLearn environment, I built a platform that models energy consumption, solar generation, and carbon emissions across multiple buildings.\n\nThen I integrated a Multi-Agent Reinforcement Learning system (GridHarmony) so buildings coordinate energy decisions for grid-level optimization — reaching a 2.51% improvement in carbon emissions."
+        },
+        {
+          "heading": "Under the hood",
+          "body": "A simulation engine computes building-level consumption, renewable utilization, and carbon emissions from real dataset timesteps.\n\nStack: Python, FastAPI, CityLearn, MARL, WebSockets."
+        }
+      ]
+    },
+    {
+      "title": "KAIRA: building a robot that knows who it's talking to",
+      "date": "Nov 2025 – Present",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "Say \"Hey KAIRA\" and a robot wakes up, recognises your face, and answers from what it actually knows. Here's how it comes together.",
+      "sections": [
+        {
+          "heading": "Wake, see, respond",
+          "body": "KAIRA is a Satbot project: a robot with a RAG architecture that recognises people and communicates, activated by the wake phrase \"Hey KAIRA\".\n\nComputer vision handles the recognition; retrieval-augmented generation handles the answers, so it responds from a real knowledge base instead of guessing."
+        },
+        {
+          "heading": "Reliable communication",
+          "body": "The pieces talk over a Subscriber-Publisher architecture with socket-based communication for reliable, real-time interaction — so vision, speech, and the language model stay in sync without stepping on each other.\n\nI also contributed to the design and development of the robot's user interface.\n\nStack: RAG, Pub-Sub architecture, sockets, computer vision."
+        }
+      ]
+    }
+  ]
+}

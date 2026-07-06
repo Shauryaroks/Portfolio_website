@@ -1,0 +1,10 @@
+{
+  "path": "~/projects",
+  "files": [
+    { "name": "EVENT_COMPLEX", "type": "folder", "size": "N/A", "tech": "Python, FastAPI, PostgreSQL, LLM APIs, WebSockets" },
+    { "name": "PERPLEXED", "type": "folder", "size": "N/A", "tech": "Next.js, TanStack, LangChain, Pinecone, Google Gemini" },
+    { "name": "CITYSAVER", "type": "folder", "size": "N/A", "tech": "Python, FastAPI, CityLearn, MARL, WebSockets" },
+    { "name": "KAIRA_SATBOT", "type": "terminal", "size": "N/A", "tech": "RAG, Pub-Sub, Sockets, Computer Vision" },
+    { "name": "README.MD", "type": "file", "size": "2 KB", "tech": "Markdown" }
+  ]
+}

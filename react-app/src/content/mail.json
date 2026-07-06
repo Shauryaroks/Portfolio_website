@@ -1,0 +1,8 @@
+{
+  "user": "shauryagarg76@gmail.com",
+  "emails": [
+    { "id": 1, "from": "john.doe@example.com", "subject": "Interested in your work", "date": "2026.02.15", "unread": true, "body": "Hi Shaurya, I came across your portfolio and I'm really impressed with your work. I'd love to connect and discuss a potential collaboration opportunity." },
+    { "id": 2, "from": "sarah.dev@github.io", "subject": "Open Source Contribution", "date": "2026.02.12", "unread": true, "body": "Hello! I noticed your CitySaver microgrid project and would like to contribute. I have experience with reinforcement learning and would love to help." },
+    { "id": 3, "from": "recruiting@techcorp.com", "subject": "Internship Opportunity", "date": "2026.02.08", "unread": false, "body": "We're looking for an AI/ML intern with your skillset. Please find the role description attached. Flexible remote work available." }
+  ]
+}

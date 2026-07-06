@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import data from "../content/explorer.json";
 
 const FolderIcon = () => (
   <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="black" strokeWidth="2">
@@ -29,20 +30,12 @@ const ImageIcon = () => (
   </svg>
 );
 
-const projects = [
-  { name: 'PROJECT_TITAN', type: 'folder', size: '44.2 MB', tech: 'React 18.2, Tailwind CSS, PostgreSQL, Docker, GraphQL' },
-  { name: 'NEURAL_DASH', type: 'folder', size: 'N/A', tech: 'TensorFlow, Python, FastAPI' },
-  { name: 'CLI_TOOLS_V2', type: 'terminal', size: 'N/A', tech: 'Go, Rust' },
-  { name: 'ASSET_VAULT', type: 'folder', size: '128 MB', tech: 'Three.js, WebGL' },
-  { name: 'SCHEMA_01.PNG', type: 'image', size: '2.4 MB', tech: 'Figma' },
-  { name: 'README.MD', type: 'file', size: '4 KB', tech: 'Markdown' },
-  { name: 'ARCHIVED_LOGS', type: 'folder', size: '8 MB', tech: 'Logrotate' },
-];
+const projects = data.files;
 
 export default function ExplorerWindow() {
   const [viewMode, setViewMode] = useState('list');
   const [selectedItem, setSelectedItem] = useState(null);
-  const currentPath = '~/projects';
+  const currentPath = data.path;
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -67,7 +60,7 @@ export default function ExplorerWindow() {
       {/* Toolbar */}
       <div className="flex items-center gap-2 px-2 py-1 bg-gray-100 border-b-2 border-black text-xs">
         <div className="ml-4 flex gap-2">
-          <button className="hover:underline">~/projects</button>
+          <button className="hover:underline">{currentPath}</button>
           <span>|</span>
           <button className="hover:underline">search</button>
         </div>

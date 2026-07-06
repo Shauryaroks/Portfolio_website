@@ -17,7 +17,7 @@ const getDefaults = () => {
   return {
     terminal:  { id: 'terminal', title: 'Terminal', x: 600,  y: 60, width: 600, height: 600, open: true,  zIndex: 12, maximized: false, minimized: false, isFullscreen: false },
     explorer:  { id: 'explorer', title: 'Explorer', x: 120, y: 100, width: 700, height: 500, open: false, zIndex: 5, maximized: false, minimized: false, isFullscreen: false },
-    blog:      { id: 'blog',     title: 'Blog',     x: 160, y: 120, width: 650, height: 550, open: false, zIndex: 4, maximized: false, minimized: false, isFullscreen: false },
+    blog:      { id: 'blog',     title: 'Blog',     x: 160, y: 120, width: 780, height: 640, open: false, zIndex: 4, maximized: false, minimized: false, isFullscreen: false },
     mail:      { id: 'mail',     title: 'Mail',    x: 200, y: 140, width: 800, height: 600, open: false, zIndex: 3, maximized: false, minimized: false, isFullscreen: false },
     resume:    { id: 'resume',   title: 'Resume',  x: 250, y: 160, width: 600, height: 700, open: false, zIndex: 2, maximized: false, minimized: false, isFullscreen: false },
     about:     { id: 'about',    title: 'About',   x: 300, y: 180, width: 550, height: 600, open: false, zIndex: 1, maximized: false, minimized: false, isFullscreen: false },

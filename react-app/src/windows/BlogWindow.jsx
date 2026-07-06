@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import data from "../content/blog.json";
 
 const HomeIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
@@ -37,11 +38,7 @@ const LogIcon = () => (
 );
 
 export default function BlogWindow() {
-  const posts = [
-    { title: 'Designing in the Shell', date: '2024.10.12', category: 'UI_METHODOLOGY' },
-    { title: 'Brutalist UI Principles', date: '2024.09.28', category: 'DESIGN' },
-    { title: 'The Grid is Absolute', date: '2024.09.15', category: 'LAYOUT' },
-  ];
+  const posts = data.posts;
 
   const [selectedPost, setSelectedPost] = useState(posts[0]);
   const [isMobile, setIsMobile] = useState(false);
@@ -114,25 +111,41 @@ export default function BlogWindow() {
         
         {/* Content */}
         <div className={`flex-1 p-4 overflow-auto ${isMobile && sidebarOpen ? 'ml-48' : ''}`}>
-          <h1 className="text-lg font-bold mb-4">{selectedPost?.title}</h1>
-          <div className="text-xs text-gray-500 mb-4">Author: ARCHIVIST_ADMIN | Date: {selectedPost?.date} | Category: {selectedPost?.category}</div>
-          
-          <p className="text-sm mb-4">
-            Modern UI has become a series of floating islands, soft shadows, and rounded pill-shapes that seek to hide the machinery of the digital world. The Shell Aesthetic rejects this comfort.
-          </p>
-          
-          <blockquote className="border-l-4 border-black pl-4 my-4 italic font-bold">
-            "The beauty is found in the precision of the pixel, the weight of the ink-black stroke, and the warmth of a parchment digital surface."
-          </blockquote>
-          
-          <h2 className="text-md font-bold mt-6 mb-2">01. THE GRID IS ABSOLUTE</h2>
-          <p className="text-sm mb-4">
-            Every element must sit on the grid. We do not align by eye; we align by logic. The architectural layout of the "Digital Archivist" system demands that spacing is fixed. 16px, 24px, 32px. No half-measures.
-          </p>
-          
-          <div className="mt-6 flex gap-2 text-xs">
-            <button className="border-2 border-black px-2 py-1 hover:bg-black hover:text-white">[SHARE_LOG]</button>
-            <button className="border-2 border-black px-2 py-1 hover:bg-black hover:text-white">[NEXT_ENTRY]</button>
+          <div className="max-w-2xl">
+            <h1 className="text-2xl font-bold mb-2 leading-tight">{selectedPost?.title}</h1>
+            <div className="text-xs text-gray-500 mb-6">Author: {selectedPost?.author} | Date: {selectedPost?.date} | Category: {selectedPost?.category}</div>
+
+            {selectedPost?.intro && (
+              <p className="text-base mb-4 leading-relaxed">{selectedPost.intro}</p>
+            )}
+
+            {selectedPost?.quote && (
+              <blockquote className="border-l-4 border-black pl-4 my-6 italic font-bold">
+                "{selectedPost.quote}"
+              </blockquote>
+            )}
+
+            {selectedPost?.sections?.map((section, i) => (
+              <div key={i} className="mb-4">
+                {section.heading && <h2 className="text-md font-bold mt-6 mb-2">{section.heading}</h2>}
+                {section.body.split(/\n\n+/).map((para, j) => (
+                  <p key={j} className="text-sm mb-3 leading-relaxed">{para}</p>
+                ))}
+              </div>
+            ))}
+
+            <div className="mt-8 flex gap-2 text-xs">
+              <button className="border-2 border-black px-2 py-1 hover:bg-black hover:text-white">[SHARE_LOG]</button>
+              <button
+                className="border-2 border-black px-2 py-1 hover:bg-black hover:text-white"
+                onClick={() => {
+                  const idx = posts.findIndex(p => p.title === selectedPost?.title);
+                  setSelectedPost(posts[(idx + 1) % posts.length]);
+                }}
+              >
+                [NEXT_ENTRY]
+              </button>
+            </div>
           </div>
         </div>
       </div>

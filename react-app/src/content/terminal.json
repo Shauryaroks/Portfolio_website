@@ -1,0 +1,49 @@
+{
+  "name": "Shaurya Garg",
+  "age": 19,
+  "role": "AI/ML & Backend Developer",
+  "status": "Open to Internships",
+  "education": [
+    "B.E. Computer Engineering — Thapar Institute of Engineering & Technology (2024–2028)",
+    "Ahlcon Public School, Delhi — CBSE (2020–2024)"
+  ],
+  "experience": [
+    {
+      "role": "Software Engineer Intern",
+      "company": "Credlix",
+      "period": "2025",
+      "points": [
+        "Built Voxera, a voice-agent framework for customer-support transactions",
+        "Built ScrapIt-OS, a B2B scraping service that records a transaction and replays it to scrape the same flow"
+      ]
+    },
+    {
+      "role": "Data Analyst Intern",
+      "company": "Moglix",
+      "period": "Jun–Jul 2025",
+      "points": [
+        "Migrated a vendor-discovery portal from Django REST to a Postgres vector database",
+        "Collaborated on a RAG-architecture chatbot for Vedanta Metal Bazaar",
+        "Automated reporting workflows through Python and Excel"
+      ]
+    }
+  ],
+  "skills": [
+    "Languages: Python, C/C++, SQL (PostgreSQL), Bash",
+    "AI/ML: RAG, MARL, LLM APIs (Gemini), LangChain, LlamaIndex, Pinecone, OpenCV",
+    "Data: pandas, NumPy, scikit-learn, XGBoost, LSTM, Apache Spark",
+    "Frameworks: FastAPI, Django, Node.js, Next.js, Streamlit, OR-Tools, DEAP",
+    "Tools: Git, Docker, AWS, Firebase, Postman, Jupyter, WSL, Arch Linux"
+  ],
+  "projects": [
+    "Event Complex — LLM-powered market simulation for 50 companies",
+    "Perplexed — AI consulting & audit sim for 200+ participants (LangChain, Gemini)",
+    "CitySaver — Real-time microgrid simulation with Multi-Agent RL",
+    "KAIRA — Voice-activated recognition robot with RAG (Satbot)"
+  ],
+  "achievements": [
+    "IIT Indore — Case Chronicles: Top 6 / 50+ teams",
+    "IIT Ropar — Enactus Case Study: Top 6 / 100+ teams",
+    "Indo-Israel Hackathon: Finalist"
+  ]
+}

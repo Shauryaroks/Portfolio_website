@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { WindowManagerContext } from "./WindowManagerContext";
+import data from "./content/terminal.json";
 
 export default function TerminalWindow() {
   const { openWindow, focusWindow } = useContext(WindowManagerContext);
@@ -25,25 +26,32 @@ export default function TerminalWindow() {
       </pre>
       
       <div className="border-t border-white pt-2 mt-2">
-        <p><span className="text-green-400">NAME:</span> Shaurya</p>
-        <p><span className="text-green-400">AGE:</span> 24</p>
-        <p><span className="text-green-400">ROLE:</span> Full Stack Developer</p>
-        <p><span className="text-green-400">STATUS:</span> ● Available for Work</p>
-      </div>
-      
-      <div className="mt-4 border-t border-white pt-2">
-        <p className="text-green-400">━━━ EDUCATION ━━━</p>
-        <p>• B.Tech in Computer Science (2024)</p>
-        <p>• Indian Institute of Technology</p>
-        <p>• Focus: Software Engineering, Distributed Systems</p>
+        <p><span className="text-green-400">NAME:</span> {data.name}</p>
+        <p><span className="text-green-400">AGE:</span> {data.age}</p>
+        <p><span className="text-green-400">ROLE:</span> {data.role}</p>
+        <p><span className="text-green-400">STATUS:</span> ● {data.status}</p>
       </div>
 
       <div className="mt-4 border-t border-white pt-2">
+        <p className="text-green-400">━━━ EDUCATION ━━━</p>
+        {data.education.map((line, i) => <p key={i}>• {line}</p>)}
+      </div>
+
+      {data.experience?.length > 0 && (
+        <div className="mt-4 border-t border-white pt-2">
+          <p className="text-green-400">━━━ EXPERIENCE ━━━</p>
+          {data.experience.map((job, i) => (
+            <div key={i} className="mt-1">
+              <p>{job.role} @ {job.company} <span className="text-gray-400">— {job.period}</span></p>
+              {job.points.map((pt, j) => <p key={j} className="ml-3">• {pt}</p>)}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-4 border-t border-white pt-2">
         <p className="text-green-400">━━━ SKILLS ━━━</p>
-        <p>• Languages: JavaScript, TypeScript, Python, Go</p>
-        <p>• Frontend: React, Vue, Tailwind CSS</p>
-        <p>• Backend: Node.js, Express, PostgreSQL, Redis</p>
-        <p>• Tools: Git, Docker, AWS, Linux</p>
+        {data.skills.map((line, i) => <p key={i}>• {line}</p>)}
       </div>
 
       <div className="mt-4 border-t border-white pt-2">
@@ -82,11 +90,16 @@ export default function TerminalWindow() {
       
       <div className="mt-4 border-t border-white pt-2">
         <p className="text-green-400">━━━ PROJECTS ━━━</p>
-        <p>• Portfolio OS - Interactive desktop portfolio</p>
-        <p>• CloudSync - Real-time file synchronization</p>
-        <p>• DataPipe - ETL pipeline framework</p>
+        {data.projects.map((line, i) => <p key={i}>• {line}</p>)}
       </div>
-      
+
+      {data.achievements?.length > 0 && (
+        <div className="mt-4 border-t border-white pt-2">
+          <p className="text-green-400">━━━ ACHIEVEMENTS ━━━</p>
+          {data.achievements.map((line, i) => <p key={i}>• {line}</p>)}
+        </div>
+      )}
+
       <div className="mt-6">
         <p className="text-green-400">shaurya@dev:~$ <span className="animate-pulse">_</span></p>
       </div>

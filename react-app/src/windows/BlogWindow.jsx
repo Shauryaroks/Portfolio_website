@@ -73,7 +73,7 @@ export default function BlogWindow() {
           </>
         ) : (
           <div className="w-56 border-r-2 border-black p-2 flex flex-col text-xs bg-[#f1f5f9] overflow-auto">
-            <PostList />
+            {postList}
           </div>
         )}
 

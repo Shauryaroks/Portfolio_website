@@ -72,7 +72,7 @@ export default function MailWindow() {
 
   const renderEmailContent = () => (
     <>
-      <div className="w-full border-r-2 border-black flex flex-col">
+      <div className="w-64 shrink-0 border-r-2 border-black flex flex-col overflow-auto">
         <div className="p-2 border-b-2 border-black bg-gray-100 text-xs font-bold">
           {activeTab.toUpperCase()}
         </div>

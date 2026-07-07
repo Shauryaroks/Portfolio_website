@@ -3,7 +3,7 @@ import { WindowManagerContext } from "./WindowManagerContext";
 import data from "./content/terminal.json";
 
 export default function TerminalWindow() {
-  const { openWindow, focusWindow } = useContext(WindowManagerContext);
+  const { openWindow, focusWindow, openBlogPost } = useContext(WindowManagerContext);
   const [showAll, setShowAll] = useState(false);
 
   const projects = [
@@ -76,21 +76,35 @@ export default function TerminalWindow() {
         ))}
         {showAll && (
           <>
-            <button className="block text-left w-full hover:bg-white hover:text-black py-1 px-2 mt-1 border border-transparent hover:border-white">
-              <span className="text-green-400">→</span> SETTINGS
-              <span className="text-gray-400 ml-2">- System preferences</span>
+            <button
+              onClick={() => { openWindow('resume'); focusWindow('resume'); }}
+              className="block text-left w-full hover:bg-white hover:text-black py-1 px-2 mt-1 border border-transparent hover:border-white"
+            >
+              <span className="text-green-400">→</span> RESUME
+              <span className="text-gray-400 ml-2">- CV & experience</span>
             </button>
-            <button className="block text-left w-full hover:bg-white hover:text-black py-1 px-2 mt-1 border border-transparent hover:border-white">
-              <span className="text-green-400">→</span> GIT
-              <span className="text-gray-400 ml-2">- Version control</span>
+            <button
+              onClick={() => { openWindow('about'); focusWindow('about'); }}
+              className="block text-left w-full hover:bg-white hover:text-black py-1 px-2 mt-1 border border-transparent hover:border-white"
+            >
+              <span className="text-green-400">→</span> ABOUT
+              <span className="text-gray-400 ml-2">- Who I am</span>
             </button>
           </>
         )}
       </div>
-      
+
       <div className="mt-4 border-t border-white pt-2">
-        <p className="text-green-400">━━━ PROJECTS ━━━</p>
-        {data.projects.map((line, i) => <p key={i}>• {line}</p>)}
+        <p className="text-green-400">━━━ PROJECTS ━━━ <span className="text-gray-500 text-xs">(click to read)</span></p>
+        {data.projects.map((proj, i) => (
+          <button
+            key={i}
+            onClick={() => openBlogPost(proj.slug)}
+            className="block text-left w-full hover:bg-white hover:text-black py-1 px-2 border border-transparent hover:border-white"
+          >
+            <span className="text-green-400">→</span> {proj.label}
+          </button>
+        ))}
       </div>
 
       {data.achievements?.length > 0 && (

@@ -2,6 +2,7 @@
   "posts": [
     {
       "title": "Event Complex: an LLM-run market for 50 companies",
+      "slug": "event-complex",
       "date": "April 2026",
       "category": "PROJECT",
       "author": "Shaurya Garg",
@@ -24,6 +25,7 @@
     },
     {
       "title": "Perplexed: four C-suite chatbots for 200+ people",
+      "slug": "perplexed",
       "date": "2025",
       "category": "PROJECT",
       "author": "Shaurya Garg",
@@ -45,6 +47,7 @@
     },
     {
       "title": "CitySaver: teaching buildings to share power",
+      "slug": "citysaver",
       "date": "Feb 2026",
       "category": "PROJECT",
       "author": "Shaurya Garg",
@@ -66,6 +69,7 @@
     },
     {
       "title": "KAIRA: building a robot that knows who it's talking to",
+      "slug": "kaira",
       "date": "Nov 2025 – Present",
       "category": "PROJECT",
       "author": "Shaurya Garg",

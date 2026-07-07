@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { WindowManagerContext } from "../WindowManagerContext";
 import data from "../content/explorer.json";
 
 const FolderIcon = () => (
@@ -33,6 +34,7 @@ const ImageIcon = () => (
 const projects = data.files;
 
 export default function ExplorerWindow() {
+  const { openBlogPost } = useContext(WindowManagerContext);
   const [viewMode, setViewMode] = useState('list');
   const [selectedItem, setSelectedItem] = useState(null);
   const currentPath = data.path;
@@ -60,9 +62,7 @@ export default function ExplorerWindow() {
       {/* Toolbar */}
       <div className="flex items-center gap-2 px-2 py-1 bg-gray-100 border-b-2 border-black text-xs">
         <div className="ml-4 flex gap-2">
-          <button className="hover:underline">{currentPath}</button>
-          <span>|</span>
-          <button className="hover:underline">search</button>
+          <span className="font-bold">{currentPath}</span>
         </div>
         <div className="ml-auto flex gap-2">
           <button onClick={() => setViewMode('list')} className={viewMode === 'list' ? 'font-bold' : ''}>List</button>
@@ -112,18 +112,39 @@ export default function ExplorerWindow() {
         {/* Main Content */}
         <div className={`flex-1 flex flex-col overflow-hidden ${isMobile && sidebarOpen ? 'ml-32' : ''}`}>
           <div className="flex-1 p-2 overflow-auto">
-            <div className="grid grid-cols-4 gap-2">
-              {projects.map((item, i) => (
-                <button 
-                  key={i}
-                  className={`flex flex-col items-center p-2 border-2 border-transparent hover:border-black hover:bg-gray-100 ${selectedItem?.name === item.name ? 'border-black bg-gray-100' : ''}`}
-                  onClick={() => setSelectedItem(item)}
-                >
-                  {getIcon(item.type)}
-                  <span className="text-xs mt-1 text-center leading-tight">{item.name}</span>
-                </button>
-              ))}
-            </div>
+            {viewMode === 'icons' ? (
+              <div className="grid grid-cols-4 gap-2">
+                {projects.map((item, i) => (
+                  <button
+                    key={i}
+                    className={`flex flex-col items-center p-2 border-2 border-transparent hover:border-black hover:bg-gray-100 ${selectedItem?.name === item.name ? 'border-black bg-gray-100' : ''}`}
+                    onClick={() => setSelectedItem(item)}
+                    onDoubleClick={() => item.slug && openBlogPost(item.slug)}
+                    title={item.slug ? 'Double-click to read the write-up' : undefined}
+                  >
+                    {getIcon(item.type)}
+                    <span className="text-xs mt-1 text-center leading-tight">{item.name}</span>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col">
+                {projects.map((item, i) => (
+                  <button
+                    key={i}
+                    className={`flex items-center gap-3 px-2 py-1.5 text-left border-2 border-transparent hover:border-black hover:bg-gray-100 ${selectedItem?.name === item.name ? 'border-black bg-gray-100' : ''}`}
+                    onClick={() => setSelectedItem(item)}
+                    onDoubleClick={() => item.slug && openBlogPost(item.slug)}
+                    title={item.slug ? 'Double-click to read the write-up' : undefined}
+                  >
+                    <span className="shrink-0 w-8 flex justify-center">{getIcon(item.type)}</span>
+                    <span className="font-bold w-40 shrink-0 truncate">{item.name}</span>
+                    <span className="text-gray-500 flex-1 truncate hidden md:block">{item.tech}</span>
+                    <span className="text-gray-400 w-14 text-right shrink-0">{item.size}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           
           {selectedItem && (
@@ -145,8 +166,14 @@ export default function ExplorerWindow() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button className="border-2 border-black px-2 py-1 text-xs hover:bg-black hover:text-white">Open</button>
-                  <button className="border-2 border-black px-2 py-1 text-xs hover:bg-black hover:text-white">Details</button>
+                  {selectedItem.slug && (
+                    <button
+                      onClick={() => openBlogPost(selectedItem.slug)}
+                      className="border-2 border-black px-2 py-1 text-xs hover:bg-black hover:text-white whitespace-nowrap"
+                    >
+                      Open ↗
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

@@ -36,10 +36,10 @@
     "Tools: Git, Docker, AWS, Firebase, Postman, Jupyter, WSL, Arch Linux"
   ],
   "projects": [
-    "Event Complex — LLM-powered market simulation for 50 companies",
-    "Perplexed — AI consulting & audit sim for 200+ participants (LangChain, Gemini)",
-    "CitySaver — Real-time microgrid simulation with Multi-Agent RL",
-    "KAIRA — Voice-activated recognition robot with RAG (Satbot)"
+    { "label": "Event Complex — LLM-powered market simulation for 50 companies", "slug": "event-complex" },
+    { "label": "Perplexed — AI consulting & audit sim for 200+ participants (LangChain, Gemini)", "slug": "perplexed" },
+    { "label": "CitySaver — Real-time microgrid simulation with Multi-Agent RL", "slug": "citysaver" },
+    { "label": "KAIRA — Voice-activated recognition robot with RAG (Satbot)", "slug": "kaira" }
   ],
   "achievements": [
     "IIT Indore — Case Chronicles: Top 6 / 50+ teams",

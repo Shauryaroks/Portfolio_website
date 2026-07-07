@@ -101,10 +101,16 @@ export function WindowManagerProvider({ children }) {
     focusedWindowId: 'terminal',
     maxZ: 12,
   });
+  const [pendingBlogSlug, setPendingBlogSlug] = React.useState(null);
   const openWindow = useCallback((id) => dispatch({ type: "OPEN", id }), []);
   const closeWindow = useCallback((id) => dispatch({ type: "CLOSE", id }), []);
   const focusWindow = useCallback((id) => dispatch({ type: "FOCUS", id }), []);
   const updateWindow = useCallback((id, update) => dispatch({ type: "UPDATE", id, update }), []);
+  // Open the Blog window focused on a specific post (by slug).
+  const openBlogPost = useCallback((slug) => {
+    setPendingBlogSlug(slug);
+    dispatch({ type: "OPEN", id: "blog" });
+  }, []);
   return (
     <WindowManagerContext.Provider value={{
       windows: state.windows,
@@ -113,6 +119,9 @@ export function WindowManagerProvider({ children }) {
       closeWindow,
       focusWindow,
       updateWindow,
+      openBlogPost,
+      pendingBlogSlug,
+      setPendingBlogSlug,
     }}>
       {children}
     </WindowManagerContext.Provider>

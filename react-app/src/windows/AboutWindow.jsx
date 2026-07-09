@@ -27,9 +27,14 @@ export default function AboutWindow() {
         <div className="border-t-2 border-black pt-4">
           <h2 className="font-bold text-lg mb-2">GET IN TOUCH</h2>
           <p>I'm always open to discussing new projects or opportunities.</p>
-          <p className="mt-2">• Email: {data.contact.email}</p>
-          <p>• GitHub: {data.contact.github}</p>
-          {data.contact.linkedin && <p>• LinkedIn: {data.contact.linkedin}</p>}
+          <p className="mt-2">• Email: <a href={`mailto:${data.contact.email}`} className="underline hover:bg-black hover:text-white">{data.contact.email}</a></p>
+          {data.contact.phone && (
+            <p>• Phone: <a href={`tel:${data.contact.phone.replace(/\s/g, "")}`} className="underline hover:bg-black hover:text-white">{data.contact.phone}</a></p>
+          )}
+          <p>• GitHub: <a href={`https://${data.contact.github}`} target="_blank" rel="noreferrer" className="underline hover:bg-black hover:text-white">{data.contact.github}</a></p>
+          {data.contact.linkedin && (
+            <p>• LinkedIn: <a href={`https://${data.contact.linkedin}`} target="_blank" rel="noreferrer" className="underline hover:bg-black hover:text-white">{data.contact.linkedin}</a></p>
+          )}
         </div>
       </div>
     </div>

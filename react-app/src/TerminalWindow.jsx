@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { WindowManagerContext } from "./WindowManagerContext";
 import data from "./content/terminal.json";
+import about from "./content/about.json";
 
 export default function TerminalWindow() {
   const { openWindow, focusWindow, openBlogPost } = useContext(WindowManagerContext);
@@ -16,12 +17,12 @@ export default function TerminalWindow() {
     <div className="w-full h-full bg-black text-white p-4 font-mono text-sm overflow-auto">
       <pre className="text-xs leading-tight mb-4">
 {`
-    ██████╗ ███████╗ █████╗ ██████╗     ██████╗ ███████╗ █████╗ ██████╗ 
-   ██╔════╝ ██╔════╝██╔══██╗██╔══██╗    ██╔══██╗ ██╔════╝██╔══██╗██╔══██╗
-   ██║  ███╗█████╗  ███████║██████╔╝    ██████╔╝ █████╗  ███████║██████╔╝
-   ██║   ██║██╔══╝  ██╔══██║██╔══██╗    ██╔══██╗ ██╔══╝  ██╔══██║██╔══██╗
-   ╚██████╔╝███████╗██║  ██║██║  ██║    ██║  ██║███████╗██║  ██║██║  ██║
-    ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
+███████╗██╗  ██╗ █████╗ ██╗   ██╗██████╗ ██╗   ██╗ █████╗
+██╔════╝██║  ██║██╔══██╗██║   ██║██╔══██╗╚██╗ ██╔╝██╔══██╗
+███████╗███████║███████║██║   ██║██████╔╝ ╚████╔╝ ███████║
+╚════██║██╔══██║██╔══██║██║   ██║██╔══██╗  ╚██╔╝  ██╔══██║
+███████║██║  ██║██║  ██║╚██████╔╝██║  ██║   ██║   ██║  ██║
+╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
 `}
       </pre>
       
@@ -113,6 +114,13 @@ export default function TerminalWindow() {
           {data.achievements.map((line, i) => <p key={i}>• {line}</p>)}
         </div>
       )}
+
+      <div className="mt-4 border-t border-white pt-2">
+        <p className="text-green-400">━━━ CONTACT ━━━</p>
+        <p><span className="text-green-400">EMAIL:</span> {about.contact.email}</p>
+        {about.contact.phone && <p><span className="text-green-400">PHONE:</span> {about.contact.phone}</p>}
+        <p><span className="text-green-400">GITHUB:</span> {about.contact.github}</p>
+      </div>
 
       <div className="mt-6">
         <p className="text-green-400">shaurya@dev:~$ <span className="animate-pulse">_</span></p>

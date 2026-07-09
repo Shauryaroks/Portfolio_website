@@ -163,6 +163,7 @@ export default function WindowShells() {
     <>
       {Object.values(windows).filter(w => w.open && !w.minimized).map((win) => {
         const isFocused = focusedWindowId === win.id;
+        const isMobile = windowSize.width < 768;
         const WindowComponent = windowComponents[win.id] || (() => <div />);
         
         return (
@@ -178,29 +179,37 @@ export default function WindowShells() {
             }}
             onMouseDown={() => focusWindow(win.id)}
           >
-            {/* Window Title Bar - draggable */}
-            <div 
+            {/* Window Title Bar - draggable on desktop only */}
+            <div
               className="flex items-center justify-between bg-black px-3 py-2 border-b-2 border-black select-none flex-shrink-0"
-              onMouseDown={(e) => handleMouseDown(e, win)}
-              style={{ cursor: win.maximized ? 'default' : 'move' }}
+              onMouseDown={isMobile ? undefined : (e) => handleMouseDown(e, win)}
+              style={{ cursor: isMobile || win.maximized ? 'default' : 'move' }}
             >
-              {/* Window Controls */}
-              <div className="flex items-center gap-2">
-                <button 
-                  className="w-5 h-5 rounded-full bg-red-500 border-2 border-red-700 hover:bg-red-600 transition-colors focus:outline-none"
+              {isMobile ? (
+                <button
+                  className="text-white text-sm font-mono font-bold focus:outline-none"
                   onClick={(e) => { e.stopPropagation(); closeWindow(win.id); }}
-                />
-                <button 
-                  className="w-5 h-5 rounded-full bg-green-500 border-2 border-green-700 hover:bg-green-600 transition-colors focus:outline-none"
-                  onClick={(e) => { e.stopPropagation(); handleMaximize(win.id); }}
-                />
-              </div>
-              
+                >
+                  ‹ Home
+                </button>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <button
+                    className="w-5 h-5 rounded-full bg-red-500 border-2 border-red-700 hover:bg-red-600 transition-colors focus:outline-none"
+                    onClick={(e) => { e.stopPropagation(); closeWindow(win.id); }}
+                  />
+                  <button
+                    className="w-5 h-5 rounded-full bg-green-500 border-2 border-green-700 hover:bg-green-600 transition-colors focus:outline-none"
+                    onClick={(e) => { e.stopPropagation(); handleMaximize(win.id); }}
+                  />
+                </div>
+              )}
+
               {/* Center: Title */}
               <span className="text-white text-sm font-mono font-bold uppercase tracking-wide absolute left-1/2 transform -translate-x-1/2">
                 {win.title}
               </span>
-              
+
               <div className="w-16"></div>
             </div>
             
@@ -210,7 +219,7 @@ export default function WindowShells() {
             </div>
             
             {/* Resize Handles - Only show when focused and not maximized */}
-            {isFocused && !win.maximized && (
+            {isFocused && !win.maximized && !isMobile && (
               <>
                 <div className="absolute top-0 left-0 w-3 h-3 cursor-nw-resize" onMouseDown={(e) => handleMouseDown(e, win, 'nw')} />
                 <div className="absolute top-0 right-0 w-3 h-3 cursor-ne-resize" onMouseDown={(e) => handleMouseDown(e, win, 'ne')} />

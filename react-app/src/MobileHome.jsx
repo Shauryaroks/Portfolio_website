@@ -33,7 +33,8 @@ export default function MobileHome() {
             onClick={() => open(app.id)}
             className="flex flex-col items-center gap-1 p-2 focus:outline-none active:scale-95 transition-transform"
           >
-            <div className="w-14 h-14 flex items-center justify-center">{app.icon}</div>
+            {/* icons hardcode width/height=32; the child-svg classes override that on phone */}
+            <div className="w-16 h-16 flex items-center justify-center [&>svg]:w-11 [&>svg]:h-11">{app.icon}</div>
             <span className="text-xs font-mono text-white text-center drop-shadow-md">{app.label}</span>
           </button>
         ))}

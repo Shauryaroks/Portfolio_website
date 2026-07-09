@@ -169,7 +169,7 @@ export default function WindowShells() {
         return (
           <div
             key={win.id}
-            className={`absolute bg-white border-2 border-black flex flex-col ${isFocused ? '' : 'opacity-70'}`}
+            className={`absolute bg-white border-2 border-black flex flex-col ${isFocused || isMobile ? '' : 'opacity-70'}`}
             style={{
               top: win.y,
               left: win.x,

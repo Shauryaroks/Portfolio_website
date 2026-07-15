@@ -117,9 +117,10 @@ export default function TerminalWindow() {
 
       <div className="mt-4 border-t border-white pt-2">
         <p className="text-green-400">━━━ CONTACT ━━━</p>
-        <p><span className="text-green-400">EMAIL:</span> {about.contact.email}</p>
-        {about.contact.phone && <p><span className="text-green-400">PHONE:</span> {about.contact.phone}</p>}
-        <p><span className="text-green-400">GITHUB:</span> {about.contact.github}</p>
+        <p><span className="text-green-400">EMAIL:</span> <a href={`mailto:${about.contact.email}`} className="underline hover:bg-white hover:text-black">{about.contact.email}</a></p>
+        {about.contact.phone && <p><span className="text-green-400">PHONE:</span> <a href={`tel:${about.contact.phone.replace(/\s/g, "")}`} className="underline hover:bg-white hover:text-black">{about.contact.phone}</a></p>}
+        <p><span className="text-green-400">GITHUB:</span> <a href={`https://${about.contact.github}`} target="_blank" rel="noreferrer" className="underline hover:bg-white hover:text-black">{about.contact.github}</a></p>
+        {about.contact.linkedin && <p><span className="text-green-400">LINKEDIN:</span> <a href={`https://${about.contact.linkedin}`} target="_blank" rel="noreferrer" className="underline hover:bg-white hover:text-black">{about.contact.linkedin}</a></p>}
       </div>
 
       <div className="mt-6">

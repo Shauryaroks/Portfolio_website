@@ -1,6 +1,80 @@
 {
   "posts": [
     {
+      "title": "Occultism: a voice agent that talks for ₹2 a minute",
+      "slug": "occultism",
+      "date": "2026",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "A real-time voice agent for astrology consultations, in Hindi and English — and a bakeoff of six speech models to find out what a minute of talking actually costs.",
+      "quote": "Talk-minutes are the whole bill. Once I logged cost per turn, the architecture decisions made themselves.",
+      "sections": [
+        {
+          "heading": "The idea",
+          "body": "Occultism is a voice-agent platform: callers speak naturally over WebRTC, in Hindi, English or Hinglish, and a live speech model answers. Harder questions are routed to a reasoning LLM fallback, masked behind filler speech so the call never goes silent.\n\nAgents are config-driven. An Agent Builder lets you pick the model, prompt and tools — HTTP tools, LLM tools and built-ins like deep_analysis and end_call — without touching code."
+        },
+        {
+          "heading": "Six models, 124 calls",
+          "body": "I ran a head-to-head bakeoff across OpenAI Realtime, Gemini Live and a cascaded Sarvam STT → LLM → TTS pipeline, logging every turn's latency, tokens and cost.\n\nThe Sarvam cascade won on price: about ₹2/min ($0.023/min), 48% cheaper than Gemini Live. Median voice round-trip across calls was 1.38 s, under the 1.5 s target. Text-to-speech turned out to be ~80% of the Sarvam bill, which tells you where to optimise next."
+        },
+        {
+          "heading": "Under the hood",
+          "body": "An async Python backend built on LiveKit Agents, with per-turn SQLite logging, a usage and cost-per-call dashboard, call recordings, silence nudges and max-length hang-ups. SSRF-guarded HTTP tools, a pytest suite, and a Docker Compose stack self-hosted on my own server behind Cloudflare Tunnels.\n\nStack: Python, LiveKit, OpenAI Realtime, Gemini Live, Sarvam, Next.js, Docker."
+        }
+      ]
+    },
+    {
+      "title": "Irregs: beating Ollama with a from-scratch C++ LLM engine",
+      "slug": "irregs",
+      "date": "Oct 2026 – Present",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "No PyTorch, no llama.cpp, no ML libraries — just C++ and one model, TinyLlama-1.1B. The goal: catch Ollama on a CPU.",
+      "quote": "Decode is a memory-bandwidth problem. Every byte of weight you don't stream is speed you get for free.",
+      "sections": [
+        {
+          "heading": "Starting slow",
+          "body": "Irregs (built with @FloatingComet62) implements the whole stack by hand: mmap weight loading, the tokenizer, the Llama transformer forward pass and the KV cache, verified token-for-token against a reference implementation.\n\nThe fp32 baseline streamed 4.4 GB of weights per token and decoded at 3.3 tokens/s. Ollama did 22.8."
+        },
+        {
+          "heading": "Closing the gap",
+          "body": "Profiling showed matmul was ~95% of runtime, so that's where the work went: INT4 quantization, SIMD kernels, fusion and threading.\n\nDecode went from 3.3 to 60.9 tokens/s — 18.5× faster — and the model shrank 6.7× (4.1 GB → 615 MB) for only +0.5% perplexity. At 4 threads it beats Ollama (llama.cpp) by 7%, matches it at 8, and uses 12% less peak RAM. Prefill is still Ollama's win — that's next."
+        },
+        {
+          "heading": "A fair fight",
+          "body": "A benchmark harness gives both engines the same prompts, chat template, greedy decoding and thread count, with a warm-up and fresh prompts each run so Ollama's prompt cache can't skip prefill. It tracks decode and prefill speed, TTFT, perplexity, energy per token and memory-bandwidth utilisation, saved per commit.\n\nStack: C++17, OpenMP, SIMD, INT4 quantization."
+        }
+      ]
+    },
+    {
+      "title": "WarRoom: a live case competition run by LLMs",
+      "slug": "warroom",
+      "date": "2026",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "A real-time case competition platform for 32–40 teams, where strategies are graded by an LLM and every team can trade stock in everyone else's company.",
+      "sections": [
+        {
+          "heading": "How it works",
+          "body": "Teams submit strategy decisions, an LLM evaluates them, and a human-in-the-loop step validates the scores before they hit the board. Meanwhile a live market lets teams trade stock in each other's companies, so every evaluation moves prices in real time.\n\nCode: github.com/Shauryaroks/WarRoom"
+        }
+      ]
+    },
+    {
+      "title": "free-code: routing work to the cheapest coding agent",
+      "slug": "free-code",
+      "date": "2026",
+      "category": "PROJECT",
+      "author": "Shaurya Garg",
+      "intro": "Why pay for the biggest coding agent on every step when a cheaper one might pass the tests?",
+      "sections": [
+        {
+          "heading": "How it works",
+          "body": "free-code runs coding-agent CLIs in parallel across git worktrees. Each step is routed to the cheapest agent that passes its test gate, so expensive models only get the work cheaper ones fail.\n\nCode: github.com/Shauryaroks/free-code"
+        }
+      ]
+    },
+    {
       "title": "Event Complex: an LLM-run market for 50 companies",
       "slug": "event-complex",
       "date": "April 2026",
@@ -15,7 +89,7 @@
         },
         {
           "heading": "The hard part: scale",
-          "body": "The backend had to support 100+ concurrent users while orchestrating load-balanced LLM API calls and synchronizing real-time state across every team.\n\nThat meant request orchestration so no single LLM call blocked the room, and a state layer that stayed consistent even as dozens of decisions landed at once."
+          "body": "The backend had to support 100+ concurrent users while orchestrating load-balanced LLM API calls and synchronizing real-time state across every team.\n\nI built it on async FastAPI endpoints and WebSockets, with request orchestration so no single LLM call blocked the room, and a PostgreSQL-backed state layer that stayed consistent even as dozens of decisions landed at once."
         },
         {
           "heading": "What I built",
@@ -37,11 +111,11 @@
         },
         {
           "heading": "Grounding the personas",
-          "body": "I engineered an LLM backend of 4 distinct chatbots, each simulating a different C-suite persona. To keep them from hallucinating, every persona was grounded on vectorized company documents via Pinecone and LangChain.\n\nSo the CFO answered from the financials, the CTO from the tech docs — retrieval-augmented, not made up."
+          "body": "I engineered an LLM backend of 4 distinct chatbots, each simulating a different C-suite persona. To keep them from hallucinating, every persona runs on a RAG pipeline: company documents are chunked, embedded and indexed in FAISS and Pinecone, then retrieved through LangChain at answer time.\n\nSo the CFO answered from the financials, the CTO from the tech docs — retrieval-augmented, not made up."
         },
         {
           "heading": "The frontend",
-          "body": "I built the full Next.js / TanStack frontend and wired Google Gemini API calls for the simulated executive responses.\n\nStack: Next.js, TanStack, LangChain, Pinecone, Google Gemini."
+          "body": "I built the full Next.js / TanStack frontend and wired Google Gemini API calls for the simulated executive responses.\n\nStack: Next.js, TanStack, LangChain, FAISS, Pinecone, Google Gemini."
         }
       ]
     },

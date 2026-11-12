@@ -1,10 +1,67 @@
 {
   "path": "~/projects",
   "files": [
-    { "name": "EVENT_COMPLEX", "type": "folder", "size": "N/A", "tech": "Python, FastAPI, PostgreSQL, LLM APIs, WebSockets", "slug": "event-complex" },
-    { "name": "PERPLEXED", "type": "folder", "size": "N/A", "tech": "Next.js, TanStack, LangChain, Pinecone, Google Gemini", "slug": "perplexed" },
-    { "name": "CITYSAVER", "type": "folder", "size": "N/A", "tech": "Python, FastAPI, CityLearn, MARL, WebSockets", "slug": "citysaver" },
-    { "name": "KAIRA_SATBOT", "type": "terminal", "size": "N/A", "tech": "RAG, Pub-Sub, Sockets, Computer Vision", "slug": "kaira" },
-    { "name": "README.MD", "type": "file", "size": "2 KB", "tech": "Markdown" }
+    {
+      "name": "OCCULTISM",
+      "type": "folder",
+      "size": "N/A",
+      "tech": "Python, LiveKit, OpenAI Realtime, Gemini Live, Sarvam",
+      "slug": "occultism"
+    },
+    {
+      "name": "IRREGS_ENGINE",
+      "type": "terminal",
+      "size": "N/A",
+      "tech": "C++17, OpenMP, SIMD, INT4 quantization",
+      "slug": "irregs"
+    },
+    {
+      "name": "WARROOM",
+      "type": "folder",
+      "size": "N/A",
+      "tech": "LLM evaluation, real-time market",
+      "slug": "warroom"
+    },
+    {
+      "name": "FREE_CODE",
+      "type": "terminal",
+      "size": "N/A",
+      "tech": "Coding agents, git worktrees",
+      "slug": "free-code"
+    },
+    {
+      "name": "EVENT_COMPLEX",
+      "type": "folder",
+      "size": "N/A",
+      "tech": "Python, FastAPI, PostgreSQL, LLM APIs, WebSockets",
+      "slug": "event-complex"
+    },
+    {
+      "name": "PERPLEXED",
+      "type": "folder",
+      "size": "N/A",
+      "tech": "Next.js, TanStack, LangChain, FAISS, Pinecone, Google Gemini",
+      "slug": "perplexed"
+    },
+    {
+      "name": "CITYSAVER",
+      "type": "folder",
+      "size": "N/A",
+      "tech": "Python, FastAPI, CityLearn, MARL, WebSockets",
+      "slug": "citysaver"
+    },
+    {
+      "name": "KAIRA_SATBOT",
+      "type": "terminal",
+      "size": "N/A",
+      "tech": "RAG, Pub-Sub, Sockets, Computer Vision",
+      "slug": "kaira"
+    },
+    {
+      "name": "README.MD",
+      "type": "file",
+      "size": "2 KB",
+      "tech": "Markdown"
+    }
   ]
 }

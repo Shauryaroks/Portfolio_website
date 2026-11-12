@@ -1,23 +1,24 @@
 {
   "name": "Shaurya Garg",
   "tagline": "Computer Engineering student & developer — Patiala, India",
-  "about": "I'm a Computer Engineering student at Thapar Institute focused on AI/ML and backend systems. I've interned building voice-agent and scraping frameworks at Credlix and a RAG chatbot at Moglix, and built LLM-driven simulation platforms, a multi-agent RL system for energy optimization, and a voice-activated recognition robot.",
+  "about": "I'm a Computer Engineering student at Thapar Institute building LLM systems end to end — from voice agents and RAG pipelines down to a from-scratch C++ inference engine. I built Occultism, a real-time Hindi/English voice-agent platform running at ~₹2/min, co-built Irregs, a CPU LLM engine that beats Ollama on decode, and interned on voice agents at Credlix and a RAG chatbot at Moglix.",
   "whatIDo": [
-    "Backend development with FastAPI, Django & PostgreSQL",
-    "AI/ML — RAG systems, LLM orchestration (Gemini/LangChain), reinforcement learning",
-    "Full-stack apps with Next.js, Node.js & Streamlit",
-    "Optimization & simulation with OR-Tools and genetic algorithms"
+    "LLM engineering — RAG, tool calling, agent workflows, voice agents",
+    "Backend with Python, async FastAPI, PostgreSQL & pgvector",
+    "LLM inference optimisation — quantization, SIMD kernels, profiling (C++)",
+    "Full-stack apps with Next.js"
   ],
   "interests": [
-    "Reinforcement Learning",
     "LLMs, RAG & agents",
-    "Optimization & simulation",
-    "Robotics & computer vision"
+    "Inference & systems performance",
+    "Voice AI",
+    "Reinforcement Learning"
   ],
   "contact": {
     "email": "shauryagarg76@gmail.com",
     "phone": "+91 96677 62299",
     "github": "github.com/shauryaroks",
-    "linkedin": "linkedin.com/in/shaurya-garg-801615313"
+    "linkedin": "linkedin.com/in/shaurya-garg-801615313",
+    "website": "shauryaroks.me"
   }
 }

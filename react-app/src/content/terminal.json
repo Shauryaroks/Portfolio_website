@@ -1,7 +1,7 @@
 {
   "name": "Shaurya Garg",
   "age": 21,
-  "role": "AI/ML & Backend Developer",
+  "role": "AI Engineer (LLMs, Agents & Inference)",
   "status": "Open to Internships",
   "education": [
     "B.E. Computer Engineering — Thapar Institute of Engineering & Technology (2024–2028)",
@@ -9,37 +9,65 @@
   ],
   "experience": [
     {
-      "role": "Software Engineer Intern",
-      "company": "Credlix",
-      "period": "2025",
-      "points": [
-        "Built Voxera, a voice-agent framework for customer-support transactions",
-        "Built ScrapIt-OS, a B2B scraping service that records a transaction and replays it to scrape the same flow"
-      ]
-    },
-    {
       "role": "Data Analyst Intern",
       "company": "Moglix",
       "period": "Jun–Jul 2025",
       "points": [
-        "Migrated a vendor-discovery portal from Django REST to a Postgres vector database",
-        "Collaborated on a RAG-architecture chatbot for Vedanta Metal Bazaar",
-        "Automated reporting workflows through Python and Excel"
+        "Migrated a vendor-discovery portal from Django REST to PostgreSQL + pgvector for embedding-based search",
+        "Collaborated on a RAG chatbot for Vedanta Metal Bazaar (chunking, embedding, retrieval)",
+        "Automated reporting workflows with Python and SQL"
+      ]
+    },
+    {
+      "role": "Software Engineer Intern",
+      "company": "Credlix",
+      "period": "2025",
+      "points": [
+        "Built backend components for Voxera, a voice-agent framework for customer-support transactions",
+        "Contributed to ScrapIt-OS, a B2B service that records a transaction and replays it to automate scraping flows"
       ]
     }
   ],
   "skills": [
-    "Languages: Python, C/C++, SQL (PostgreSQL), Bash",
-    "AI/ML: RAG, MARL, LLM APIs (Gemini), LangChain, LlamaIndex, Pinecone, OpenCV",
-    "Data: pandas, NumPy, scikit-learn, XGBoost, LSTM, Apache Spark",
-    "Frameworks: FastAPI, Django, Node.js, Next.js, Streamlit, OR-Tools, DEAP",
-    "Tools: Git, Docker, AWS, Firebase, Postman, Jupyter, WSL, Arch Linux"
+    "Languages: Python, SQL (PostgreSQL, SQLite), C/C++, Bash",
+    "LLM: OpenAI API, Gemini, RAG, Embeddings, Tool Calling, Agent Workflows, LangChain, LlamaIndex",
+    "Vector DBs: FAISS, Pinecone, pgvector",
+    "Backend: FastAPI, Django REST, asyncio, WebSockets, LiveKit",
+    "Tools: Git, Docker, pytest, AWS, Cloudflare Tunnels, Linux"
   ],
   "projects": [
-    { "label": "Event Complex — LLM-powered market simulation for 50 companies", "slug": "event-complex" },
-    { "label": "Perplexed — AI consulting & audit sim for 200+ participants (LangChain, Gemini)", "slug": "perplexed" },
-    { "label": "CitySaver — Real-time microgrid simulation with Multi-Agent RL", "slug": "citysaver" },
-    { "label": "KAIRA — Voice-activated recognition robot with RAG (Satbot)", "slug": "kaira" }
+    {
+      "label": "Occultism — Hindi/English voice-agent platform, ~₹2/min, 1.38 s median round-trip",
+      "slug": "occultism"
+    },
+    {
+      "label": "Irregs — from-scratch C++ LLM engine, 18.5× faster decode, beats Ollama by 7%",
+      "slug": "irregs"
+    },
+    {
+      "label": "WarRoom — real-time case competition platform with LLM-evaluated strategies",
+      "slug": "warroom"
+    },
+    {
+      "label": "free-code — parallel coding agents routed to the cheapest one that passes tests",
+      "slug": "free-code"
+    },
+    {
+      "label": "Event Complex — LLM-powered market simulation for 50 companies",
+      "slug": "event-complex"
+    },
+    {
+      "label": "Perplexed — AI consulting & audit sim for 200+ participants (LangChain, Gemini)",
+      "slug": "perplexed"
+    },
+    {
+      "label": "CitySaver — Real-time microgrid simulation with Multi-Agent RL",
+      "slug": "citysaver"
+    },
+    {
+      "label": "KAIRA — Voice-activated recognition robot with RAG (Satbot)",
+      "slug": "kaira"
+    }
   ],
   "achievements": [
     "IIT Indore — Case Chronicles: Top 6 / 50+ teams",
